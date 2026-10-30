@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comissões — Atelier Morcego</title>
+<meta name="description" content="Obras selecionadas de comissões e encomendas do Atelier Morcego.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.comissoes-hero {
+  min-height: 70vh;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 36px;
+  align-items: center;
+  padding: calc(var(--nav-h) + 56px) 48px 56px;
+  background: linear-gradient(135deg, rgba(245,238,220,0.6), rgba(255,255,255,0.95));
+}
+.comissoes-hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4.8vw, 3.4rem);
+  line-height: 1.04;
+  margin-bottom: 16px;
+}
+.comissoes-hero p {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--preto);
+  opacity: 0.72;
+  max-width: 560px;
+}
+.comissoes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  padding: 0 48px 80px;
+}
+.comissao-card {
+  border: 1px solid rgba(10,10,10,0.08);
+  background: var(--branco);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.comissao-card .thumb {
+  height: 220px;
+  background: linear-gradient(135deg, rgba(245,238,220,0.9), rgba(10,10,10,0.06));
+  border: 1px solid rgba(10,10,10,0.06);
+}
+.comissao-card h2 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+}
+.comissao-card p {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--preto);
+  opacity: 0.72;
+}
+.comissao-card .meta {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(10,10,10,0.56);
+}
+@media (max-width: 860px) {
+  .comissoes-hero, .comissoes-grid { grid-template-columns: 1fr; padding-left: 24px; padding-right: 24px; }
+  .comissoes-hero { padding-top: calc(var(--nav-h) + 32px); }
+}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="../index.html" class="nav-logo">
+    <img src="../assets/img/morcego-mark.png" alt="Atelier Morcego">
+    <span>Atelier Morcego</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../sobre/index.html">Sobre</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="../ceramicas-selecionadas/index.html">Cerâmicas selecionadas</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="index.html" aria-current="page">Comissões</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="../lessons/index.html">Aulas</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="../shop/index.html">Loja</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="../journal/index.html">Journal</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="nav-icon-btn" type="button" aria-label="Pesquisar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="5"/><path d="m15 15 4 4"/></svg>
+    </button>
+    <button class="nav-icon-link nav-cart-toggle" type="button" aria-label="Abrir cesto de compras" aria-expanded="false">
+      <svg class="nav-cart-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="19" r="1.3"/><circle cx="17" cy="19" r="1.3"/><path d="M3 4h2l2.5 10h8.5l2.2-6H7"/></svg>
+      <span class="nav-cart-count" aria-label="3 itens">3</span>
+    </button>
+  </div>
+  <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-menu-backdrop" aria-hidden="true"></div>
+</nav>
+
+<header class="comissoes-hero">
+  <div>
+    <p class="section-label">Comissões</p>
+    <h1>
+    <a class="btn" href="../contato/index.html">Solicitar uma comissão</a>
+  </div>
+</header>
+
+<section class="comissoes-grid">
+  <article class="comissao-card">
+    <div class="thumb"></div>
+    <p class="meta">Encomenda · 2026</p>
+    <h2>Conjunto de vasos para sala</h2>
+    <p>Vasos altos em esmalte cru e superfície matte, pensados para compor um ambiente de leitura e contemplação.</p>
+  </article>
+  <article class="comissao-card">
+    <div class="thumb"></div>
+    <p class="meta">Encomenda · 2025</p>
+    <h2>Jogo de xícaras e pires</h2>
+    <p>Peças feitas sob medida para uma mesa de café, com proporção mais fechada e acabamento diferenciado.</p>
+  </article>
+  <article class="comissao-card">
+    <div class="thumb"></div>
+    <p class="meta">Encomenda · 2025</p>
+    <h2>Escultura de parede</h2>
+    <p>Peça de presença escultórica, criada para ocupar uma parede em destaque e dialogar com o entorno.</p>
+  </article>
+  <article class="comissao-card">
+    <div class="thumb"></div>
+    <p class="meta">Encomenda · 2024</p>
+    <h2>Peça de mesa para presente</h2>
+    <p>Uma peça singular concebida como presente, com acabamento pensado para delicadeza e durabilidade.</p>
+  </article>
+</section>
+
+<div class="cart-drawer-backdrop" aria-hidden="true"></div>
+<aside class="cart-drawer" aria-label="Cesto de compras">
+  <div class="cart-drawer-header">
+    <div>
+      <p class="section-label">Cesto</p>
+      <h2>Cesto de compras</h2>
+    </div>
+    <button class="cart-drawer-close" type="button" aria-label="Fechar cesto">✕</button>
+  </div>
+  <div class="cart-drawer-body">
+    <div class="cart-empty">Seu cesto está pronto para receber as peças que você escolheu.</div>
+    <div class="cart-item"><div class="cart-item-figure"></div><div class="cart-item-meta"><strong>Vaso de queima alta</strong><span>Peça única</span></div></div>
+    <div class="cart-summary">
+      <div class="cart-summary-row"><span>Subtotal</span><strong>R$ 0,00</strong></div>
+      <a class="btn btn-solid btn-full" href="../pagamento/index.html">Ir para o pagamento</a>
+    </div>
+  </div>
+</aside>
+
+<script src="../assets/main.js"></script>
+</body>
+</html>
