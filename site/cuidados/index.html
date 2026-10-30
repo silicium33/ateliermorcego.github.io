@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuidados e Longevidade — Atelier Morcego</title>
+<meta name="description" content="Como cuidar das peças de cerâmica do Atelier Morcego.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+
+/* ---------- CARE GRID ---------- */
+#cuidados-list { background: var(--branco); }
+
+.cuidados-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(10,10,10,0.1);
+  border: 1px solid rgba(10,10,10,0.1);
+}
+
+.cuidado-card {
+  background: var(--branco);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cuidado-card .icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
+
+.cuidado-card h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--preto);
+}
+
+.cuidado-card p {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: var(--preto);
+  opacity: 0.7;
+}
+
+@media (max-width: 700px) {
+  .cuidados-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- DO / DON'T ---------- */
+#do-dont { background: var(--creme); }
+
+.dodont-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 900px;
+}
+
+.dodont-col {
+  background: var(--branco);
+  padding: 36px;
+}
+
+.dodont-col h3 {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.dodont-col.do h3 { color: var(--preto); }
+.dodont-col.dont h3 { color: var(--vermelho); }
+
+.dodont-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dodont-col li {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--preto);
+  opacity: 0.75;
+  padding-left: 20px;
+  position: relative;
+}
+
+.dodont-col.do li::before {
+  content: '+';
+  position: absolute;
+  left: 0;
+  color: var(--preto);
+  font-weight: 600;
+}
+
+.dodont-col.dont li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--vermelho);
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .dodont-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- FAQ ---------- */
+#faq { background: var(--branco); }
+
+.faq-list {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item {
+  border-top: 1px solid rgba(10,10,10,0.12);
+  padding: 24px 0;
+}
+
+.faq-list .faq-item:last-child { border-bottom: 1px solid rgba(10,10,10,0.12); }
+
+.faq-item summary {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--preto);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: '+';
+  font-family: var(--sans);
+  font-size: 1.2rem;
+  color: var(--vermelho);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.faq-item[open] summary::after { transform: rotate(45deg); }
+
+.faq-item p {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: var(--preto);
+  opacity: 0.7;
+  margin-top: 16px;
+  max-width: 600px;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <img src="../assets/img/morcego-mark.png" alt="Atelier Morcego">
+    <span>Atelier Morcego</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../sobre/index.html">Sobre</a></li>
+    <li><a href="../ceramicas-selecionadas/index.html">Cerâmicas selecionadas</a></li>
+    <li><a href="../comissoes/index.html">Comissões</a></li>
+    <li><a href="../lessons/index.html">Aulas</a></li>
+    <li><a href="../shop/index.html">Loja</a></li>
+    <li><a href="../journal/index.html">Journal</a></li>
+  </ul>
+  <a class="nav-login" href="#" aria-label="Entrar">Entrar</a>
+  <a href="../shop/index.html" class="nav-cart">Shop</a>
+  <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <p class="section-label">Cuidados e longevidade</p>
+  <h1>Como cuidar<br>da sua peça.</h1>
+  <p class="page-dek">Orientações práticas para manter a peça em bom estado pelo maior tempo possível.</p>
+</header>
+
+<!-- CARE CARDS -->
+<section id="cuidados-list">
+  <div class="cuidados-grid">
+    <div class="cuidado-card">
+      <h3>Limpeza</h3>
+      <p class="copy-tbd">[ Texto a definir — tom: funcional/direto. Instruções de limpeza. ]</p>
+    </div>
+    <div class="cuidado-card">
+      <h3>Uso com alimentos</h3>
+      <p class="copy-tbd">[ Texto a definir — tom: funcional/direto. Orientação sobre contato com alimentos. ]</p>
+    </div>
+    <div class="cuidado-card">
+      <h3>Armazenamento</h3>
+      <p class="copy-tbd">[ Texto a definir — tom: funcional/direto. Como guardar a peça. ]</p>
+    </div>
+    <div class="cuidado-card">
+      <h3>Variações naturais</h3>
+      <p class="copy-tbd">[ Texto a definir — tom: funcional/direto. Explicação sobre marcas próprias da queima em alta temperatura. ]</p>
+    </div>
+  </div>
+</section>
+
+<!-- DO / DON'T -->
+<section id="do-dont">
+  <p class="section-label">Resumo rápido</p>
+  <div class="dodont-grid">
+    <div class="dodont-col do">
+      <h3>Faça</h3>
+      <ul>
+        <li>[ Item a definir ]</li>
+        <li>[ Item a definir ]</li>
+        <li>[ Item a definir ]</li>
+      </ul>
+    </div>
+    <div class="dodont-col dont">
+      <h3>Evite</h3>
+      <ul>
+        <li>[ Item a definir ]</li>
+        <li>[ Item a definir ]</li>
+        <li>[ Item a definir ]</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <p class="section-label">Perguntas frequentes</p>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>[ Pergunta a definir ]</summary>
+      <p class="copy-tbd">[ Resposta a definir — tom: funcional/direto. ]</p>
+    </details>
+    <details class="faq-item">
+      <summary>[ Pergunta a definir ]</summary>
+      <p class="copy-tbd">[ Resposta a definir — tom: funcional/direto. ]</p>
+    </details>
+    <details class="faq-item">
+      <summary>[ Pergunta a definir ]</summary>
+      <p class="copy-tbd">[ Resposta a definir — tom: funcional/direto. ]</p>
+    </details>
+  </div>
+</section>
+
+<div class="mark-divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <img src="../assets/img/morcego-mark.png" alt="">
+        <span>Atelier Morcego</span>
+      </div>
+      <p>Cerâmica de alta temperatura. Gustavo Sirqueira — Santana de Parnaíba / SP.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Navegação</h3>
+      <ul>
+        <li><a href="../shop/index.html">Shop</a></li>
+        <li><a href="../sobre/index.html">Sobre</a></li>
+        <li><a href="../journal/index.html">Journal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Atelier</h3>
+      <ul>
+        <li><a href="../cuidados/index.html">Cuidados e longevidade</a></li>
+        <li><a href="../termos/index.html">Termos & Condições</a></li>
+        <li><a href="../contato/index.html">Contato</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Siga</h3>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">Atelier Morcego — todos os direitos reservados</span>
+    <span class="footer-copy">Santana de Parnaíba — SP</span>
+  </div>
+</footer>
+
+<script src="../assets/main.js"></script>
+</body>
+</html>
