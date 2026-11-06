@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reserva — Aulas</title>
+<meta name="description" content="Reserva de aulas privadas no Atelier Morcego.">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+.reserve-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 0;
+  background: var(--branco);
+}
+.reserve-visual {
+  background: linear-gradient(135deg, rgba(245,238,220,0.9), rgba(255,255,255,0.95));
+  padding: calc(var(--nav-h) + 56px) 48px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.reserve-visual h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.reserve-visual p {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--preto);
+  opacity: 0.7;
+  max-width: 520px;
+}
+.reserve-form-wrap {
+  padding: calc(var(--nav-h) + 56px) 48px 56px;
+  display: flex;
+  align-items: center;
+}
+.reserve-form {
+  width: 100%;
+  background: var(--branco);
+  border: 1px solid rgba(10,10,10,0.08);
+  padding: 32px;
+  display: grid;
+  gap: 18px;
+}
+.reserve-form h2 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+.reserve-form label {
+  display: grid;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--preto);
+  opacity: 0.7;
+}
+.reserve-form input,
+.reserve-form select,
+.reserve-form textarea {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  padding: 12px 14px;
+  border: 1px solid rgba(10,10,10,0.12);
+  background: rgba(255,255,255,0.9);
+}
+.reserve-form textarea { min-height: 120px; resize: vertical; }
+.reserve-actions { display: flex; gap: 12px; flex-wrap: wrap; }.reserve-progress { display: flex; gap: 12px; margin-bottom: 6px; }
+.reserve-progress-step { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(10,10,10,0.45); }
+.reserve-progress-step::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: rgba(10,10,10,0.2); display: inline-block; }
+.reserve-progress-step.is-active { color: var(--preto); }
+.reserve-progress-step.is-active::before { background: var(--preto); }
+.reserve-progress-step.is-done { color: rgba(10,10,10,0.7); }
+.reserve-progress-step.is-done::before { background: rgba(10,10,10,0.6); }
+.step-panel[hidden] { display: none; }
+.step-panel { display: grid; gap: 18px; }@media (max-width: 860px) { .reserve-shell { grid-template-columns: 1fr; } .reserve-visual, .reserve-form-wrap { padding: 32px 24px 40px; } }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="../../index.html" class="nav-logo">
+    <img src="../../assets/img/morcego-mark.png" alt="Atelier Morcego">
+    <span>Atelier Morcego</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../../sobre/index.html">Sobre</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="../../ceramicas-selecionadas/index.html">Cerâmicas selecionadas</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="../../comissoes/index.html">Comissões</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="../index.html">Aulas</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="../../shop/index.html">Loja</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="../../journal/index.html">Journal</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="nav-icon-btn" type="button" aria-label="Pesquisar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="5"/><path d="m15 15 4 4"/></svg>
+    </button>
+    <button class="nav-icon-link nav-cart-toggle" type="button" aria-label="Abrir cesto de compras" aria-expanded="false">
+      <svg class="nav-cart-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="19" r="1.3"/><circle cx="17" cy="19" r="1.3"/><path d="M3 4h2l2.5 10h8.5l2.2-6H7"/></svg>
+      <span class="nav-cart-count" aria-label="3 itens">3</span>
+    </button>
+  </div>
+  <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-menu-backdrop" aria-hidden="true"></div>
+</nav>
+
+<div class="reserve-shell">
+  <section class="reserve-visual">
+    <p class="section-label">Reserve sua aula</p>
+    <h1>Uma sessão particular para aprender, experimentar e criar.</h1>
+    <p>Esta é uma versão visual inspirada na experiência de reserva de Michelle Wen, adaptada ao layout atual do Atelier Morcego para um fluxo simples e elegante.</p>
+  </section>
+  <section class="reserve-form-wrap">
+    <form class="reserve-form">
+      <div class="reserve-progress" aria-label="Progresso da reserva">
+        <div class="reserve-progress-step is-active">Agendamento</div>
+        <div class="reserve-progress-step">Login</div>
+      </div>
+      <h2>Agende sua aula</h2>
+
+      <div class="step-panel" data-step-panel>
+        <label>Tipo de aula<select><option>Aula particular</option><option>Workshop</option></select></label>
+        <label>Data desejada<input type="date"></label>
+        <label>Horário desejado<input type="time"></label>
+        <label>Mensagem<textarea placeholder="Conte um pouco sobre sua experiência e o que você quer explorar."></textarea></label>
+        <div class="reserve-actions">
+          <button class="btn btn-solid" type="button" data-step-next>Continuar para o login</button>
+        </div>
+      </div>
+
+      <div class="step-panel" data-step-panel hidden>
+        <label>E-mail<input type="email" placeholder="seu@email.com"></label>
+        <label>Senha<input type="password" placeholder="********"></label>
+        <div class="reserve-actions">
+          <button class="btn" type="button" data-step-back>Voltar</button>
+          <button class="btn btn-solid" type="button">Reservar</button>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>
+
+<div class="cart-drawer-backdrop" aria-hidden="true"></div>
+<aside class="cart-drawer" aria-label="Cesto de compras">
+  <div class="cart-drawer-header">
+    <div><p class="section-label">Cesto</p><h2>Cesto de compras</h2></div>
+    <button class="cart-drawer-close" type="button" aria-label="Fechar cesto">✕</button>
+  </div>
+  <div class="cart-drawer-body">
+    <div class="cart-empty">Seu cesto está pronto para receber as peças que você escolheu.</div>
+    <div class="cart-item"><div class="cart-item-figure"></div><div class="cart-item-meta"><strong>Vaso de queima alta</strong><span>Peça única</span></div></div>
+    <div class="cart-summary">
+      <div class="cart-summary-row"><span>Subtotal</span><strong>R$ 0,00</strong></div>
+      <a class="btn btn-solid btn-full" href="../../pagamento/index.html">Ir para o pagamento</a>
+    </div>
+  </div>
+</aside>
+
+<script src="../../assets/main.js"></script>
+<script>
+  const stepPanels = Array.from(document.querySelectorAll('[data-step-panel]'));
+  const progressSteps = Array.from(document.querySelectorAll('.reserve-progress-step'));
+  const nextButtons = Array.from(document.querySelectorAll('[data-step-next]'));
+  const backButtons = Array.from(document.querySelectorAll('[data-step-back]'));
+  let currentStep = 1;
+
+  function renderStep(step) {
+    stepPanels.forEach((panel, index) => {
+      const isActive = index + 1 === step;
+      panel.hidden = !isActive;
+    });
+
+    progressSteps.forEach((item, index) => {
+      item.classList.toggle('is-active', index + 1 === step);
+      item.classList.toggle('is-done', index + 1 < step);
+    });
+  }
+
+  nextButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (currentStep < stepPanels.length) {
+        currentStep += 1;
+        renderStep(currentStep);
+      }
+    });
+  });
+
+  backButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (currentStep > 1) {
+        currentStep -= 1;
+        renderStep(currentStep);
+      }
+    });
+  });
+
+  renderStep(currentStep);
+</script>
+</body>
+</html>

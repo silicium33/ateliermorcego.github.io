@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contato — Atelier Morcego</title>
+<meta name="description" content="Fale com o Atelier Morcego — Santana de Parnaíba, SP.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+
+/* ---------- CONTATO MAIN ---------- */
+#contato-main {
+  background: var(--preto);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  min-height: 70vh;
+  align-items: center;
+}
+
+.contato-info .section-label { color: var(--vermelho); }
+
+.contato-info h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  color: var(--branco);
+  line-height: 1.05;
+  margin-bottom: 28px;
+}
+
+.contato-info p.page-dek {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--creme);
+  opacity: 0.6;
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 440px;
+}
+
+.contato-links {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contato-links a {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--creme);
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.2s, color 0.2s;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.contato-links a span.label {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--vermelho);
+  opacity: 1;
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.contato-links a:hover { opacity: 1; color: var(--vermelho); }
+
+/* ---------- FORM (estático — sem backend) ---------- */
+.contato-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field label {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--creme);
+  opacity: 0.6;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(245,238,220,0.3);
+  color: var(--branco);
+  padding: 10px 2px;
+  resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder,
+.form-field select option { color: rgba(245,238,220,0.3); }
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  outline: none;
+  border-bottom-color: var(--vermelho);
+}
+
+.form-note {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: var(--creme);
+  opacity: 0.4;
+  line-height: 1.6;
+}
+
+.contact-progress {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.contact-progress-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245,238,220,0.45);
+}
+
+.contact-progress-step::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(245,238,220,0.2);
+  display: inline-block;
+}
+
+.contact-progress-step.is-active {
+  color: var(--branco);
+}
+
+.contact-progress-step.is-active::before {
+  background: var(--vermelho);
+}
+
+.contact-progress-step.is-done {
+  color: rgba(245,238,220,0.7);
+}
+
+.contact-progress-step.is-done::before {
+  background: rgba(245,238,220,0.6);
+}
+
+.step-panel[hidden] { display: none; }
+.step-panel { display: grid; gap: 18px; }
+.contato-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ---------- LOCATION STRIP ---------- */
+#localizacao { background: var(--creme); }
+
+.localizacao-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.localizacao-inner h2 {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--preto);
+}
+
+.localizacao-inner p {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--preto);
+  opacity: 0.65;
+}
+
+@media (max-width: 860px) {
+  #contato-main { grid-template-columns: 1fr; gap: 48px; padding-top: 56px; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="../index.html" class="nav-logo">
+    <img src="../assets/img/morcego-mark.png" alt="Atelier Morcego">
+    <span>Atelier Morcego</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../sobre/index.html">Sobre</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="../ceramicas-selecionadas/index.html">Cerâmicas selecionadas</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="../comissoes/index.html">Comissões</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="../lessons/index.html">Aulas</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="../shop/index.html">Loja</a></li>
+    <li><span class="nav-separator">|</span></li>
+    <li><a href="../journal/index.html">Journal</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="nav-icon-btn" type="button" aria-label="Pesquisar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="5"/><path d="m15 15 4 4"/></svg>
+    </button>
+    <button class="nav-icon-btn" type="button" aria-label="Wishlist">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-6.5-4.35-8.25-8.1A4.94 4.94 0 0 1 8.25 5.3c1.48 0 2.73.75 3.75 2.02A4.93 4.93 0 0 1 15.75 5.3a4.94 4.94 0 0 1 4.5 6.6C18.5 15.65 12 20 12 20Z"/></svg>
+    </button>
+    <button class="nav-icon-link nav-cart-toggle" type="button" aria-label="Abrir cesto de compras" aria-expanded="false">
+      <svg class="nav-cart-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="19" r="1.3"/><circle cx="17" cy="19" r="1.3"/><path d="M3 4h2l2.5 10h8.5l2.2-6H7"/></svg>
+      <span class="nav-cart-count" aria-label="3 itens">3</span>
+    </button>
+  </div>
+  <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-menu-backdrop" aria-hidden="true"></div>
+</nav>
+
+<!-- CONTATO MAIN -->
+<section id="contato-main" style="padding-top: calc(var(--nav-h) + 56px);">
+  <div class="contato-info">
+    <p class="section-label">Contato</p>
+    <h1>Fale com<br>o atelier.</h1>
+    <p class="page-dek">Dúvidas sobre peças, encomendas ou visitas ao atelier — escreva ou preencha o formulário ao lado.</p>
+    <div class="contato-links">
+      <a href="mailto:contato@ateliermorcego.com.br"><span class="label">E-mail</span>contato@ateliermorcego.com.br</a>
+      <a href="#"><span class="label">Instagram</span>@ateliermorcego</a>
+      <a href="#"><span class="label">WhatsApp</span>[ número a definir ]</a>
+    </div>
+  </div>
+
+  <form class="contato-form" aria-label="Formulário de contato">
+    <div class="contact-progress" aria-label="Progresso do contato">
+      <div class="contact-progress-step is-active">Seu pedido</div>
+      <div class="contact-progress-step">Seus dados</div>
+    </div>
+
+    <div class="step-panel" data-step-panel>
+      <div class="form-field">
+        <label for="assunto">Assunto</label>
+        <select id="assunto" name="assunto">
+          <option>Encomenda</option>
+          <option>Visita ao atelier</option>
+          <option>Dúvida sobre peça</option>
+          <option>Outros</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="tipo">Tipo de pedido</label>
+        <select id="tipo" name="tipo">
+          <option>Peça personalizada</option>
+          <option>Conjunto para decoração</option>
+          <option>Aula ou workshop</option>
+          <option>Consulta geral</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre o que você deseja."></textarea>
+      </div>
+      <button type="button" class="btn btn-on-dark" data-step-next>Continuar</button>
+    </div>
+
+    <div class="step-panel" data-step-panel hidden>
+      <div class="form-field">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome">
+      </div>
+      <div class="form-field">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="seu@email.com">
+      </div>
+      <div class="form-field">
+        <label for="telefone">Telefone</label>
+        <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
+      </div>
+      <div class="contato-actions">
+        <button type="button" class="btn btn-on-dark" data-step-back>Voltar</button>
+        <button type="button" class="btn btn-on-dark" data-step-submit>Enviar</button>
+      </div>
+      <p class="form-note" data-form-message role="status" aria-live="polite">Responderemos em até 48 horas.</p>
+    </div>
+  </form>
+</section>
+
+<!-- LOCALIZAÇÃO -->
+<section id="localizacao">
+  <div class="localizacao-inner">
+    <h2>Santana de Parnaíba — SP</h2>
+    <p>[ Endereço completo a definir — atelier aberto a visitas mediante agendamento. ]</p>
+  </div>
+</section>
+
+<div class="mark-divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <img src="../assets/img/morcego-mark.png" alt="">
+        <span>Atelier Morcego</span>
+      </div>
+      <p>Cerâmica de alta temperatura. Gustavo Sirqueira — Santana de Parnaíba / SP.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Navegação</h3>
+      <ul>
+        <li><a href="../shop/index.html">Shop</a></li>
+        <li><a href="../sobre/index.html">Sobre</a></li>
+        <li><a href="../journal/index.html">Journal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Atelier</h3>
+    <div class="footer-col">
+      <h3>Atelier</h3>
+      <ul>
+        <li><a href="../cuidados/index.html">Cuidados e longevidade</a></li>
+        <li><a href="../termos/index.html">Termos & Condições</a></li>
+        <li><a href="../contato/index.html">Contato</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Siga</h3>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">Atelier Morcego — todos os direitos reservados</span>
+    <span class="footer-copy">Santana de Parnaíba — SP</span>
+  </div>
+</footer>
+
+<div class="cart-drawer-backdrop" aria-hidden="true"></div>
+<aside class="cart-drawer" aria-label="Cesto de compras">
+  <div class="cart-drawer-header">
+    <div>
+      <p class="section-label">Cesto</p>
+      <h2>Cesto de compras</h2>
+    </div>
+    <button class="cart-drawer-close" type="button" aria-label="Fechar cesto">✕</button>
+  </div>
+  <div class="cart-drawer-body">
+    <div class="cart-empty">Seu cesto está pronto para receber as peças que você escolheu.</div>
+    <div class="cart-item">
+      <div class="cart-item-figure"></div>
+      <div class="cart-item-meta">
+        <strong>Vaso de queima alta</strong>
+        <span>Peça única</span>
+      </div>
+    </div>
+    <div class="cart-summary">
+      <div class="cart-summary-row"><span>Subtotal</span><strong>R$ 0,00</strong></div>
+      <a class="btn btn-solid btn-full" href="../pagamento/index.html">Ir para o pagamento</a>
+    </div>
+  </div>
+</aside>
+
+<script src="../assets/main.js"></script>
+<script>
+  const contactPanels = Array.from(document.querySelectorAll('[data-step-panel]'));
+  const contactProgressSteps = Array.from(document.querySelectorAll('.contact-progress-step'));
+  const contactNextButtons = Array.from(document.querySelectorAll('[data-step-next]'));
+  const contactBackButtons = Array.from(document.querySelectorAll('[data-step-back]'));
+  const submitButton = document.querySelector('[data-step-submit]');
+  const contactFormMessage = document.querySelector('[data-form-message]');
+  let currentContactStep = 1;
+
+  function renderContactStep(step) {
+    contactPanels.forEach((panel, index) => {
+      panel.hidden = index + 1 !== step;
+    });
+
+    contactProgressSteps.forEach((item, index) => {
+      item.classList.toggle('is-active', index + 1 === step);
+      item.classList.toggle('is-done', index + 1 < step);
+    });
+  }
+
+  contactNextButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (currentContactStep < contactPanels.length) {
+        currentContactStep += 1;
+        renderContactStep(currentContactStep);
+      }
+    });
+  });
+
+  contactBackButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (currentContactStep > 1) {
+        currentContactStep -= 1;
+        renderContactStep(currentContactStep);
+      }
+    });
+  });
+
+  submitButton?.addEventListener('click', () => {
+    const nome = document.querySelector('#nome')?.value?.trim() || 'você';
+    contactFormMessage.textContent = `Obrigado, ${nome}! Recebemos sua mensagem e entraremos em contato em breve.`;
+  });
+
+  renderContactStep(currentContactStep);
+</script>
+</body>
+</html>
