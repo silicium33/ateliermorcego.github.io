@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamento — Atelier Morcego</title>
+<meta name="description" content="Página de pagamento do Atelier Morcego.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+#payment-page {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 24px;
+  align-items: start;
+}
+.payment-card {
+  background: var(--branco);
+  border: 1px solid rgba(10,10,10,0.08);
+  padding: 28px;
+}
+.payment-card h2 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+.payment-card p,
+.payment-card label {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--preto);
+  opacity: 0.72;
+}
+.payment-card form {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+.payment-card input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(10,10,10,0.12);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+}
+.payment-summary {
+  background: rgba(245,238,220,0.5);
+}
+.payment-summary ul { list-style: none; display: grid; gap: 10px; margin-top: 14px; }
+.payment-summary li { display: flex; justify-content: space-between; font-family: var(--sans); font-size: 0.9rem; }
+@media (max-width: 860px) { #payment-page { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="../index.html" class="nav-logo">
+    <img src="../assets/img/morcego-mark.png" alt="Atelier Morcego">
+    <span>Atelier Morcego</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../sobre/index.html">Sobre</a></li>
+    <li><a href="../ceramicas-selecionadas/index.html">Cerâmicas selecionadas</a></li>
+    <li><a href="../comissoes/index.html">Comissões</a></li>
+    <li><a href="../lessons/index.html">Aulas</a></li>
+    <li><a href="../shop/index.html">Loja</a></li>
+    <li><a href="../journal/index.html">Journal</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="nav-icon-btn" type="button" aria-label="Pesquisar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="5"/><path d="m15 15 4 4"/></svg>
+    </button>
+    <button class="nav-icon-btn" type="button" aria-label="Wishlist">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-6.5-4.35-8.25-8.1A4.94 4.94 0 0 1 8.25 5.3c1.48 0 2.73.75 3.75 2.02A4.93 4.93 0 0 1 15.75 5.3a4.94 4.94 0 0 1 4.5 6.6C18.5 15.65 12 20 12 20Z"/></svg>
+    </button>
+    <button class="nav-icon-link nav-cart-toggle" type="button" aria-label="Abrir cesto de compras" aria-expanded="false">
+      <svg class="nav-cart-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="19" r="1.3"/><circle cx="17" cy="19" r="1.3"/><path d="M3 4h2l2.5 10h8.5l2.2-6H7"/></svg>
+      <span class="nav-cart-count" aria-label="3 itens">3</span>
+    </button>
+  </div>
+  <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-menu-backdrop" aria-hidden="true"></div>
+</nav>
+
+<header class="page-hero">
+  <p class="section-label">Pagamento</p>
+  <h1>Finalize sua compra com tranquilidade.</h1>
+  <p class="page-dek">Esta é uma etapa visual de referência para o fluxo de checkout do atelier.</p>
+</header>
+
+<main>
+  <section id="payment-page">
+    <div class="payment-card">
+      <h2>Dados de contato</h2>
+      <p>Preencha os campos abaixo para prosseguir.</p>
+      <form>
+        <label>Nome completo<input type="text" placeholder="Seu nome"></label>
+        <label>E-mail<input type="email" placeholder="seu@email.com"></label>
+        <label>Endereço<input type="text" placeholder="Rua, número, complemento"></label>
+        <label>CEP<input type="text" placeholder="00000-000"></label>
+        <button class="btn btn-solid" type="button">Confirmar pedido</button>
+      </form>
+    </div>
+    <aside class="payment-card payment-summary">
+      <h2>Resumo</h2>
+      <ul>
+        <li><span>Vaso de queima alta</span><strong>R$ 0,00</strong></li>
+        <li><span>Envio</span><strong>R$ 0,00</strong></li>
+        <li><span>Total</span><strong>R$ 0,00</strong></li>
+      </ul>
+    </aside>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo"><span>Atelier Morcego</span></div>
+      <p>Cerâmica de alta temperatura. Gustavo Sirqueira — Santana de Parnaíba / SP.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="cart-drawer-backdrop" aria-hidden="true"></div>
+<aside class="cart-drawer" aria-label="Cesto de compras">
+  <div class="cart-drawer-header">
+    <div>
+      <p class="section-label">Cesto</p>
+      <h2>Cesto de compras</h2>
+    </div>
+    <button class="cart-drawer-close" type="button" aria-label="Fechar cesto">✕</button>
+  </div>
+  <div class="cart-drawer-body">
+    <div class="cart-empty">Seu cesto está pronto para receber as peças que você escolheu.</div>
+    <div class="cart-item">
+      <div class="cart-item-figure"></div>
+      <div class="cart-item-meta"><strong>Vaso de queima alta</strong><span>Peça única</span></div>
+    </div>
+    <div class="cart-summary">
+      <div class="cart-summary-row"><span>Subtotal</span><strong>R$ 0,00</strong></div>
+      <a class="btn btn-solid btn-full" href="../pagamento/index.html">Ir para o pagamento</a>
+    </div>
+  </div>
+</aside>
+
+<script src="../assets/main.js"></script>
+</body>
+</html>
