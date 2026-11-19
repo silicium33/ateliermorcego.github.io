@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Journal — Atelier Morcego</title>
+    <link>https://silicium33.github.io/ateliermorcego.github.io/journal/</link>
+    <description>Notas de oficina, experiências e pontos de vista sobre cerâmica, matéria e processo.</description>
+    <language>pt-br</language>
+    <lastBuildDate>Mon, 22 Jun 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>A que se pretende guardar</title>
+      <link>https://silicium33.github.io/ateliermorcego.github.io/journal/inauguracao-do-blog/</link>
+      <guid isPermaLink="true">https://silicium33.github.io/ateliermorcego.github.io/journal/inauguracao-do-blog/</guid>
+      <description>Uma reflexão sobre guardar, olhar e abrir um espaço para o processo no atelier.</description>
+      <pubDate>Mon, 22 Jun 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Argila branca Everest: notas após dois anos de uso</title>
+      <link>https://silicium33.github.io/ateliermorcego.github.io/journal/argila-do-oriente/</link>
+      <guid isPermaLink="true">https://silicium33.github.io/ateliermorcego.github.io/journal/argila-do-oriente/</guid>
+      <description>Uma revisão pessoal da argila branca Everest, da Mineração Terranova, após dois anos de uso em modelagem manual e torno.</description>
+      <pubDate>Sat, 20 Jun 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

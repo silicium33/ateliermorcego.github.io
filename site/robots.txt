@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://silicium33.github.io/ateliermorcego.github.io/sitemap.xml
